@@ -1,5 +1,15 @@
 import { Component } from '@angular/core';
-import {ButtonModule} from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
+interface Numero {
+  giro1: number;
+  giro2: number;
+  giro3: number;
+  giro4: number;
+  giro5: number;
+}
+const ESTRATEGIA: Numero[] = [
+
+];
 
 @Component({
   selector: 'app-root',
@@ -7,7 +17,9 @@ import {ButtonModule} from 'primeng/button';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'roulette';
+  estrategia = ESTRATEGIA;
+  title = 'SO WHO’S COUNTING';
+
 
   number: number;
 
@@ -17,62 +29,47 @@ export class AppComponent {
 
   strategy: number[][];
 
-  createStrategy(){
-    this.strategy[0][0]=5;
-    this.strategy[0][1]=5;
-    this.strategy[0][2]=4;
-    this.strategy[0][3]=4;
-    this.strategy[0][4]=5;
-    this.strategy[0][5]=5;
-    this.strategy[0][6]=5;
-    this.strategy[0][7]=5;
-    this.strategy[0][8]=4;
-    //Giro 2
-    this.strategy[1][0]=5;
-    this.strategy[1][1]=5;
-    this.strategy[1][2]=4;
-    this.strategy[1][3]=4;
-    this.strategy[1][4]=5;
-    this.strategy[1][5]=5;
-    this.strategy[1][6]=5;
-    this.strategy[1][7]=5;
-    this.strategy[1][8]=4;
-     //Giro 3
-     this.strategy[2][0]=5;
-     this.strategy[2][1]=5;
-     this.strategy[2][2]=4;
-     this.strategy[2][3]=4;
-     this.strategy[2][4]=5;
-     this.strategy[2][5]=5;
-     this.strategy[2][6]=5;
-     this.strategy[2][7]=5;
-     this.strategy[2][8]=4;
-    //Giro 4
-    this.strategy[3][0]=5;
-    this.strategy[3][1]=5;
-    this.strategy[3][2]=4;
-    this.strategy[3][3]=4;
-    this.strategy[3][4]=5;
-    this.strategy[3][5]=5;
-    this.strategy[3][6]=5;
-    this.strategy[3][7]=5;
-    this.strategy[3][8]=4;
-    this.strategy[3][8]=4;
+  turnRoulette() {
+    this.number = Math.round(Math.random() * (9 - 0));
 
-    //Giro 5
-    this.strategy[4][0]=5;
-    this.strategy[4][1]=5;
-    this.strategy[4][2]=4;
-    this.strategy[4][3]=4;
-    this.strategy[4][4]=5;
-    this.strategy[4][5]=5;
-    this.strategy[4][6]=5;
-    this.strategy[4][7]=5;
-    this.strategy[4][8]=4;
 
   }
 
-  turnRoulette(){
-    this.number = Math.round(Math.random() * (9 - 0));
+  updateValue() {
+
+    this.estrategia[1].giro1 = this.estrategia[1].giro1 + 1;
+
+  }
+
+  simulate() {
+    let filaAfectar = 0;
+    let numeroElegir = 0; 
+
+
+    for (let index = 0; index < 299; index++) {
+      filaAfectar = Math.floor((Math.random() * (8)) + 1);
+      for (let index = 0; index < 5; index++) {
+        numeroElegir =  Math.round(Math.random() * (5));
+        ESTRATEGIA[filaAfectar].giro1 = numeroElegir;
+      }
+
+    }
+
+  }
+  initStrategy() {
+    if (ESTRATEGIA.length < 10) {
+      for (let index = 0; index < 10; index++) {
+        ESTRATEGIA.push({
+          giro1: 1,
+          giro2: 1,
+          giro3: 1,
+          giro4: 1,
+          giro5: 1
+        });
+      }
+    }
+  }
+  calculateGanance() {
+    console.log("Ella (?) te ama");
   }
 }
