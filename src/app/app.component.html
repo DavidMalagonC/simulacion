@@ -377,7 +377,7 @@
     <button
       type="button"
       class="button p-button-danger"
-      (click)="initStrategy()"
+      (click)="simulate()"
     >
       Girar ruleta
     </button>
@@ -386,7 +386,20 @@
   <div id="number" *ngIf="number">
     <p>El numero generado es: {{ number }}</p>
   </div>
+  <div>
+    
+    <label for="n1">Ingrese el numero de iteración n1:</label>
+    
+    <input id= "n1" type="number" [(ngModel)]="n1" class ="form-control"/>
 
+    <label for="n2">Ingrese el numero de iteración n2:</label>
+
+    <input id= "n2" type="number" [(ngModel)]="n2" class ="form-control"/>
+
+    <label for="t">Ingrese la temperatura inicial:</label>
+
+    <input id= "t" type="number" [(ngModel)]="t" class ="form-control"/>
+  </div>
   <table class="table table-striped float-left">
     <thead>
       <tr>
